@@ -13,7 +13,23 @@ RESET=$(tput sgr0)
 # Set the name of the log file to include the current date and time
 LOG="install-$(date +%d-%H%M%S).log"
 
+# Print system-update warning message
+printf "\n${NOTE} This will explicitly install Catppuccin GTK Mocha and Latte Themes\n"
+printf "\n"
+printf "\n"
 
+# proceed
+read -n1 -rep "${CAT} Shall we proceed? (y/n) " PROCEED
+    echo
+if [[ $PROCEED =~ ^[Yy]$ ]]; then
+    printf "\n%s  Alright.....LETS BEGIN!.\n" "${OK}"
+else
+    printf "\n%s  NO changes made to your system. Goodbye.!!!\n" "${NOTE}"
+    exit
+fi
+
+#clear screen
+clear
 
 # Check for AUR helper and install if not found
 ISAUR=$(command -v yay || command -v paru)
