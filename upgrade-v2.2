@@ -44,7 +44,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
 
     printf " Copying config files...\n"
     mkdir -p ~/.themes
-    cp -r .themes ~/ || { echo "Error: Failed to copy hypr config files."; exit 1; } 2>&1 | tee -a "$LOG"
+    cp -r themes/* ~/.themes || { echo "Error: Failed to copy hypr config files."; exit 1; } 2>&1 | tee -a "$LOG"
     rm -r ~/.config/hypr/scripts/waybar-style-change || { echo "Error: Failed to delete waybar-style-change."; exit 1; } 2>&1 | tee -a "$LOG"
     rm -r ~/.config/hypr/scripts/layout-switcher || { echo "Error: Failed to delete layout-switcher."; exit 1; } 2>&1 | tee -a "$LOG"
     cp -r hypr ~/.config/ && { echo "Copy completed!"; } || { echo "Error: Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
