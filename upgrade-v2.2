@@ -120,6 +120,7 @@ if [[ $upgrade =~ ^[Yy]$ ]]; then
 
 
         printf " Copying config files...\n"
+        rm -r ~/.config/hypr/scripts/dark-light-mode || { echo "Error: Failed to delete dark-light-mode."; exit 1; } 2>&1 | tee -a "$LOG"
         rm -r ~/.config/hypr/scripts/waybar-style-change || { echo "Error: Failed to delete waybar-style-change."; exit 1; } 2>&1 | tee -a "$LOG"
         rm -r ~/.config/hypr/scripts/layout-switcher || { echo "Error: Failed to delete layout-switcher."; exit 1; } 2>&1 | tee -a "$LOG"
         cp -r hypr ~/.config/ && { echo "Copy completed!"; } || { echo "Error: Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
