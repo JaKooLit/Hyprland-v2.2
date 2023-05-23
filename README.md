@@ -7,3 +7,8 @@
 - clone the repo 
 - chmod +x upgrade-v2.2
 - ./upgrade-v2.2
+
+
+
+# to revert, check if ~/.themes-backup and ~/hypr-backup is present delete the folders ~/.themes and ~/hypr and restore the backups
+
