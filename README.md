@@ -12,6 +12,6 @@
 
 ## to revert, 
 
--a.)unistall gtk-catppuccin-mocha and gtk-catppuccin-latte 
+-a.) unistall packages gtk-catppuccin-mocha and gtk-catppuccin-latte 
 
 -b.) ~/hypr-backup is present. if present, simply delete ~/hypr and rename the ~/hypr-backup to ~/hypr
