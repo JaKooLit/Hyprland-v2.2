@@ -13,6 +13,6 @@
 
 ## to revert, 
 
--a.) unistall packages gtk-catppuccin-mocha and gtk-catppuccin-latte 
+-a.) uninstall packages gtk-catppuccin-mocha-themes and gtk-catppuccin-latte-themes 
 
--b.) ~/.config/hypr-backup is present. if present, simply delete ~/.config/hypr and rename the ~/.config/hypr-backup to ~/.config/hypr
+-b.) If ~/.config/hypr-backup is present, simply delete ~/.config/hypr and rename the ~/.config/hypr-backup to ~/.config/hypr
