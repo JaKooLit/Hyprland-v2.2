@@ -98,15 +98,17 @@ set -e # Exit immediately if a command exits with a non-zero status.
 read -n1 -rep "${CAT} Proceed with upgrade? (y,n)" upgrade
 
 if [[ $upgrade =~ ^[Yy]$ ]]; then
-  printf "${NOTE} Installing Theme packages...\n"
-  for THEME in catppuccin-gtk-theme-mocha catppuccin-gtk-theme-latte ; do
+    printf "${NOTE} Installing Theme packages...\n"
+    for THEME in catppuccin-gtk-theme-mocha catppuccin-gtk-theme-latte ; do
     install_package "$THEME" 2>&1 | tee -a "$LOG"
         if [ $? -ne 0 ]; then
         echo -e "\e[1A\e[K${ERROR} - $THEME install had failed, please check the install.log"
         exit 1
-        # check for existing config folders and backup 
-    for DIR in hypr 
-    do 
+        fi
+
+        done
+    # check for existing config folders and backup 
+    for DIR in hypr ; do 
         DIRPATH=~/.config/$DIR
         if [ -d "$DIRPATH" ]; then 
             echo -e "${NOTE} - Config for $DIR found, attempting to back up."
@@ -114,7 +116,7 @@ if [[ $upgrade =~ ^[Yy]$ ]]; then
             echo -e "${NOTE} - Backed up $DIR to $DIRPATH-back-up."
         fi
 
-    done
+        done
 
 
         printf " Copying config files...\n"
@@ -128,18 +130,16 @@ if [[ $upgrade =~ ^[Yy]$ ]]; then
         chmod +x ~/.config/hypr/scripts/waybar-style-change 2>&1 | tee -a "$LOG"
 
         ### Script is done ###
-    printf "\n${OK} Done.\n"
-    printf "\n"
-    printf "\n"
-    read -n1 -rep "${CAT} Would you like to logout (y,n)" HYP
+            printf "\n${OK} Done.\n"
+            printf "\n"
+            printf "\n"
+            read -n1 -rep "${CAT} Would you like to logout (y,n)" HYP
 
-    if [[ $HYP =~ ^[Yy]$ ]]; then
-            hyprctl dispatch exit
-    else
-            exit
-        fi
+            if [[ $HYP =~ ^[Yy]$ ]]; then
+                hyprctl dispatch exit
+            else
+                exit
             fi
-                done
 
 else
     printf "${NOTE} No upgrade done"
