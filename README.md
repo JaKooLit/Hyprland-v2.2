@@ -15,4 +15,4 @@
 
 -a.) unistall packages gtk-catppuccin-mocha and gtk-catppuccin-latte 
 
--b.) ~/hypr-backup is present. if present, simply delete ~/hypr and rename the ~/hypr-backup to ~/hypr
+-b.) ~/.config/hypr-backup is present. if present, simply delete ~/.config/hypr and rename the ~/.config/hypr-backup to ~/.config/hypr
