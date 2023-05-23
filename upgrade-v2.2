@@ -104,15 +104,7 @@ if [[ $upgrade =~ ^[Yy]$ ]]; then
         if [ $? -ne 0 ]; then
         echo -e "\e[1A\e[K${ERROR} - $THEME install had failed, please check the install.log"
         exit 1
-    fi
-    done
-
-else
-  printf "${NOTE} No upgrade done"
-fi
-
-
-# check for existing config folders and backup 
+        # check for existing config folders and backup 
     for DIR in hypr 
     do 
         DIRPATH=~/.config/$DIR
@@ -125,26 +117,36 @@ fi
     done
 
 
-    printf " Copying config files...\n"
-    rm -r ~/.config/hypr/scripts/waybar-style-change || { echo "Error: Failed to delete waybar-style-change."; exit 1; } 2>&1 | tee -a "$LOG"
-    rm -r ~/.config/hypr/scripts/layout-switcher || { echo "Error: Failed to delete layout-switcher."; exit 1; } 2>&1 | tee -a "$LOG"
-    cp -r hypr ~/.config/ && { echo "Copy completed!"; } || { echo "Error: Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
+        printf " Copying config files...\n"
+        rm -r ~/.config/hypr/scripts/waybar-style-change || { echo "Error: Failed to delete waybar-style-change."; exit 1; } 2>&1 | tee -a "$LOG"
+        rm -r ~/.config/hypr/scripts/layout-switcher || { echo "Error: Failed to delete layout-switcher."; exit 1; } 2>&1 | tee -a "$LOG"
+        cp -r hypr ~/.config/ && { echo "Copy completed!"; } || { echo "Error: Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
     
-    # Set some files as executable 
-    chmod +x ~/.config/hypr/scripts/dark-light-mode 2>&1 | tee -a "$LOG"
-    chmod +x ~/.config/hypr/scripts/layout-switcher 2>&1 | tee -a "$LOG"
-    chmod +x ~/.config/hypr/scripts/waybar-style-change 2>&1 | tee -a "$LOG"
+        # Set some files as executable 
+        chmod +x ~/.config/hypr/scripts/dark-light-mode 2>&1 | tee -a "$LOG"
+        chmod +x ~/.config/hypr/scripts/layout-switcher 2>&1 | tee -a "$LOG"
+        chmod +x ~/.config/hypr/scripts/waybar-style-change 2>&1 | tee -a "$LOG"
 
-### Script is done ###
-printf "\n${OK} Done.\n"
-printf "\n"
-printf "\n"
-read -n1 -rep "${CAT} Would you like to logout (y,n)" HYP
+        ### Script is done ###
+    printf "\n${OK} Done.\n"
+    printf "\n"
+    printf "\n"
+    read -n1 -rep "${CAT} Would you like to logout (y,n)" HYP
 
-if [[ $HYP =~ ^[Yy]$ ]]; then
-        hyprctl dispatch exit
- else
-     exit
+    if [[ $HYP =~ ^[Yy]$ ]]; then
+            hyprctl dispatch exit
+    else
+            exit
+        fi
+            fi
+                done
+
+else
+    printf "${NOTE} No upgrade done"
+    exit
 fi
+
+
+
 
 
