@@ -4,7 +4,8 @@
 
 
 ## Steps
-- clone the repo 
+- clone this repo https://github.com/JaKooLit/Hyprland-v2.2.git
+- cd Hyprland-v2.2
 - chmod +x upgrade-v2.2
 - ./upgrade-v2.2
 
