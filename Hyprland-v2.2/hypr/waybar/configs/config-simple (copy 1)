@@ -1,0 +1,109 @@
+{
+"include": "~/.config/hypr/waybar/modules",
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+
+"modules-left": ["custom/menu", "wlr/workspaces"],
+"modules-center": ["clock"],
+"modules-right": ["backlight", "pulseaudio", "bluetooth", "network", "battery"],
+    
+
+"custom/arch": {
+  "format": "",
+  "tooltip": false,
+  "on-click": "$HOME/.config/hypr/scripts/menu",
+  "on-click-right": "$HOME/.config/hypr/scripts/layout-switcher",
+  "on-click-middle": "~/.config/hypr/scripts/changeWallpaper",
+},
+"wlr/workspaces": {
+  //"format": "{name}",
+  "format": "{icon}",
+  "on-click": "activate",
+  "tooltip": false,
+  "all-outputs": true,
+  "format-icons": {
+  "active": "",
+  "default": ""
+  }
+},
+
+"clock": {
+  "format": "<span color='#b4befe'> </span>{:%H:%M}",
+},
+
+"backlight": {
+  "interval": 2,
+  "align": 0,
+  "rotate": 0,
+  "format": "<span color='#b4befe'>{icon}</span> {percent}%",
+  //format-icons-Arch
+  //"format-icons": ["󰃞", "󰃟", "󰃠"],
+  //format-icons-Gen2
+  "format-icons": ["", "", "", "", "", "", "", "", ""],
+   "on-click": "",
+   "on-click-middle": "",
+   "on-click-right": "",
+   "on-update": "",
+   "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
+   "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
+   "smooth-scrolling-threshold": 1,
+   "on-click-right": "~/.config/hypr/scripts/dark-light-mode",
+},
+
+"pulseaudio": {
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{icon}  {volume}% ",
+  "format-muted": "",
+  "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+  "default": ["", "", ""],
+  "ignored-sinks": ["Easy Effects Sink"],
+},
+  "scroll-step": 5.0,
+  "on-click": "~/.config/hypr/scripts/volume --toggle",
+  "on-click-right": "pavucontrol",
+  "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+  "on-scroll-down": "~/.config/hypr/scripts/volume --dec",
+  "smooth-scrolling-threshold": 1,
+},
+
+"bluetooth": {
+  "format": "<span color='#b4befe'></span> {status}",
+  "format-disabled": "", // an empty format will hide the module
+  "format-connected": "<span color='#b4befe'></span> {num_connections}",
+  "tooltip-format": "{device_enumerate}",
+  "tooltip-format-enumerate-connected": "{device_alias}   {device_address}",
+  "on-click": "foot -T bluetoothctl",
+},
+
+"network": {
+  //"interface": "wlo1",
+  "format": "{ifname}",
+  "format-wifi": "<span color='#b4befe'>  </span>{essid}",
+  "format-ethernet": "  Wired",
+  "format-linked": " {ifname} (No IP)",
+  "format-disconnected": "<span color='#b4befe'> </span>No Network",
+  "tooltip": false,
+  "on-click": "foot -T nmtui",
+},
+
+"battery": {
+  "format": "<span color='#b4befe'>{icon}</span> {capacity}%",
+  "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+  "format-charging": "<span color='#b4befe'></span> {capacity}%",
+  "tooltip": false,
+  "on-click-middle": "~/.config/hypr/scripts/glassmorphism",
+  "on-click-right": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+},
+}
