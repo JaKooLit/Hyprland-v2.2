@@ -16,8 +16,22 @@ LOG="install-$(date +%d-%H%M%S).log"
 ### Copy Config Files ###
 set -e # Exit immediately if a command exits with a non-zero status.
 
-read -n1 -rep "${CAT} Proceed with upgrade? (y,n)" CFG
-if [[ $CFG =~ ^[Yy]$ ]]; then
+read -n1 -rep "${CAT} Proceed with upgrade? (y,n)" upgrade
+
+if [[ $upgrade =~ ^[Yy]$ ]]; then
+  printf "${NOTE} Installing Theme packages...\n"
+  for THEME in catppuccin-gtk-theme-mocha catppuccin-gtk-theme-latte ; do
+    install_package "$THEME" 2>&1 | tee -a "$LOG"
+        if [ $? -ne 0 ]; then
+        echo -e "\e[1A\e[K${ERROR} - $THEME install had failed, please check the install.log"
+        exit 1
+    fi
+    done
+
+else
+  printf "${NOTE} No upgrade done"
+fi
+
 
 # check for existing config folders and backup 
     for DIR in hypr 
@@ -31,20 +45,8 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
 
     done
 
-    for DIRw in .themes
-    do 
-        DIRPATH=~/$DIRw
-        if [ -d "$DIRPATH" ]; then 
-            echo -e "${NOTE} - themes in $DIRw found, attempting to back up."
-            cp -r $DIRPATH $DIRPATH-back-up 2>&1 | tee -a "$LOG"
-            echo -e "${NOTE} - Backed up $DIRw to $DIRPATH-back-up."
-        fi
-
-    done
 
     printf " Copying config files...\n"
-    mkdir -p ~/.themes
-    cp -r themes/* ~/.themes || { echo "Error: Failed to copy hypr config files."; exit 1; } 2>&1 | tee -a "$LOG"
     rm -r ~/.config/hypr/scripts/waybar-style-change || { echo "Error: Failed to delete waybar-style-change."; exit 1; } 2>&1 | tee -a "$LOG"
     rm -r ~/.config/hypr/scripts/layout-switcher || { echo "Error: Failed to delete layout-switcher."; exit 1; } 2>&1 | tee -a "$LOG"
     cp -r hypr ~/.config/ && { echo "Copy completed!"; } || { echo "Error: Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
