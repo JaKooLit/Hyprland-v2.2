@@ -8,14 +8,19 @@ COLORS="$HOME/.config/hypr/wofifull/colors"
 WAYBARFILE="$HOME/.config/hypr/waybar/config"
 WOFIFILE="$HOME/.config/hypr/wofi/config"
 
-# Wofi Command
+# wofi window config (in %)
+WIDTH=12
+HEIGHT=30
+
+## Wofi Command
 wofi_command="wofi --show dmenu \
-		--prompt 'choose..' \
-                --conf ${CONFIG} --style ${STYLE} --color ${COLORS} \
-                --width=10% --height=25% \
-                --cache-file=/dev/null \
-                --hide-scroll --no-actions \
-                --define=matching=fuzzy"
+			--prompt choose...
+			--conf $CONFIG --style $STYLE --color $COLORS \
+			--width=$WIDTH% --height=$HEIGHT% \
+			--cache-file=/dev/null \
+			--hide-scroll --no-actions \
+			--matching=fuzzy"
+
 
 menu(){
 printf "1. default\n" 
