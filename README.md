@@ -22,4 +22,4 @@
 
 
 ## Long term notes
-- if there are small upgrades in the future, I will continue using the Hyprland-v2.1 layouts so you dont need to love around much on your configs especially the wallpaper files.
+- if there are small upgrades in the future, I will continue using the Hyprland-v2.1 layouts so you dont need to move around much on your configs especially the wallpaper files.
