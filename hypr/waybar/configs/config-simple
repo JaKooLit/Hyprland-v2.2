@@ -18,7 +18,8 @@
 	"wlr/workspaces"
 	],
 "modules-center": [
-	"clock"
+	"clock",
+	"custom/light_dark"
 	],
 "modules-right": [
 	"backlight", 
