@@ -6,6 +6,11 @@
 - a) easiest way is to upgrade to Hyprland-v2.1 first. and then ran this small upgrade. This is because this script is checking the dark and light folders, which contains a dark and light wallpapers.
 - b) if decided not to upgrade to v2.1, download the wallpapers folder from Hyprland-v2.1, place it to your ~/Pictures/wallpapers. Make a backup of your ~/.config/hypr, rename it to like ~/.config/hypr-backup. Copy the hypr folder from this repo to your ~/.config/hypr , overwriting the files needed. Once copied, Make all new scripts from this repo executable by running chmod +x dark-light-mode , chmod +x layout-switcher, chmod +x waybar-style-change.
 
+
+### youtube link
+- Youtube Link presentation :[`Youtube Link`](https://youtu.be/va4vvjfC-tM)
+
+
 ## Steps
 - clone this repo https://github.com/JaKooLit/Hyprland-v2.2.git
 - cd Hyprland-v2.2
