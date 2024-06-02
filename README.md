@@ -1,3 +1,6 @@
+03-June-2024
+- Archived in favor of https://github.com/JaKooLit/Arch-Hyprland
+
 ## Hyprland-v2.2
 - An slight upgrade from v2.1 which includes installation of Catppuccin Mocha and Latte GTK themes. 
 - This can be use to directly upgrade Hyprland-v2.1 config files.
